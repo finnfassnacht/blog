@@ -173,8 +173,7 @@ note that the source can be a local file as well
 ```
 
 ## Update an Application
-Lets also briefly talk about how to update a application 
-I added a simple POST route to my nodejs script.
+Let's briefly discuss how to update your application. For instance, you might want to add a new POST route to your Node.js script that returns data sent to the server.
 ```js
 router.post("/return", (req,res) => {
 	let D = (req.body)
@@ -182,19 +181,21 @@ router.post("/return", (req,res) => {
 	res.end()
 })
 ```
+**Using the CLI**
+```
+ibmcloud ce app update --name appname --src repolink-here --str buildpacks
+```
+**Using the Web UI**
+--add steps--
+
 ## How it works
 That's all you need to do to deploy your app from source. Let's talk about the magic that happens after you hit "Create."
 
 First, IBM Code Engine loads your source code from a repository or from your computer locally. It then builds a Docker image and runs it on the IBM Cloud.
 
 Your container is run using Kubernetes, which automatically scales your application up and down based on traffic. This ensures that your app always has enough resources to handle incoming requests, while saving money during low traffic periods when Kubernetes scales down your application.
->> use gpt here
 
 ## Better Performance
-Ok so if you want to deploy a simple web app fast and easy, no you know how.
-However what if i told you there was a way to make your app a lot faster?
-Enter Containers, if you deploy your app from source, Code Engine will make a container (and image) for you.
-The language you use will be detected and a broad pre built image will be selected for it,
-altough Code Engine knows what you need, it doesn't know what specifically you dont need.
-This results in larger images and there fore wourse performance because it takes longer to load.
-You however know what your code needs and more importantly doesn't need. We can choose a lighter base image and there for get better performance.
+Congratulations, you now know how to deploy a simple web app quickly and easily! 
+
+But what if I told you there's a way to make your app even faster? Enter containers. When you deploy your app from source, Code Engine creates a container and image for you. The platform detects the language you're using and selects a broad pre-built image for it, but it doesn't know exactly what your app needs or doesn't need. As a result, the image may be larger than necessary, leading to slower performance due to longer loading times. By creating your own, lighter base image, you can optimize performance by ensuring that only the necessary components are included.
