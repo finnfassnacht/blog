@@ -188,6 +188,7 @@ That's all you need to do to deploy your app from source. Let's talk about the m
 First, IBM Code Engine loads your source code from a repository or from your computer locally. It then builds a Docker image and runs it on the IBM Cloud.
 
 Your container is run using Kubernetes, which automatically scales your application up and down based on traffic. This ensures that your app always has enough resources to handle incoming requests, while saving money during low traffic periods when Kubernetes scales down your application.
+>> use gpt here
 
 ## Better Performance
 Ok so if you want to deploy a simple web app fast and easy, no you know how.
