@@ -142,15 +142,16 @@ ibmcloud target -d Default
 Now that we've created a project, let's move on to deploying our code. We'll be deploying our code from a source that's hosted in a [Github Repository](https://github.com/finnfassnacht/Code-Engine-nodejs), along with the package.json and package-lock.json files. In this repository, you'll find a sample server written in Node.js (see the sample code above).
 
 **In the Web UI**
-1. Click on your project in the Code Engine Dashboard.
-2. Select "Applications" from the sidebar.
-3. Click "Create" to create a new application.
-4. Select "Source code" and enter the repository link.
-5. Click the "Specify build details" button.
-6. If your repository is not private, you can proceed to the next step.
-7. Select "Cloud Native Buildpack" and click "Next".
-8. Unless reason to change something click "Next" again
-9. Once you're done configuring the build options, click "Create" to deploy your application.
+1. Click on Projects in the Code Engine Dashboard.
+2. Click on your Project.
+3. Select "Applications" from the sidebar.
+4. Click "Create" to create a new application.
+5. Select "Source code" and enter the repository link.
+6. Click the "Specify build details" button.
+7. If your repository is not private, you can proceed to the next step.
+8. Select "Cloud Native Buildpack" and click "Next".
+9. Unless you habe reason to change something click "Next" again
+10. Once you're done configuring the build options, click "Create" to deploy your application.
 
 Blast off!
 
@@ -164,7 +165,7 @@ ibmcloud ce app create --name appname --src repolink-here --str buildpacks
 ```
 >Define the source of the code 
 ```
---src repolink or /path/to/file
+--src repolink or /path/to/folder
 ```
 note that the source can be a local file as well 
 >Define stratagey
@@ -199,3 +200,68 @@ Your container is run using Kubernetes, which automatically scales your applicat
 Congratulations, you now know how to deploy a simple web app quickly and easily! 
 
 But what if I told you there's a way to make your app even faster? Enter containers. When you deploy your app from source, Code Engine creates a container and image for you. The platform detects the language you're using and selects a broad pre-built image for it, but it doesn't know exactly what your app needs or doesn't need. As a result, the image may be larger than necessary, leading to slower performance due to longer loading times. By creating your own, lighter base image, you can optimize performance by ensuring that only the necessary components are included.
+
+## Making an Image
+
+To build an image, you don't need to worry about installing Docker or getting its daemon to run properly. That's because Code Engine will again build the image for you. The difference is that we can specify how to build it.
+
+To build your own custom image, you'll need to create a Dockerfile. In this example, we'll be creating one for the Node.js app. To get started, create a new file called "Dockerfile" without any file extension. 
+
+```dockerfile 
+FROM node:alpine
+WORKDIR /usr/src/app
+COPY package*.json index.js ./
+RUN npm install
+EXPOSE 8080
+CMD ["node", "index.js"]
+```
+> Use a pre-built image (alpine is extremely lightwait)
+```dockerfile
+FROM node:alpine
+```
+> Specify a Working Directory
+```dockerfile
+WORKDIR /usr/src/app
+```
+> Copy package.json and package-lock.json
+```dockerfile
+COPY package*.json index.js ./
+```
+> Install the required packages
+```dockerfile
+RUN npm install
+```
+> Expose the port 8080 to the Outside
+```dockerfile
+Expose 8080
+```
+> finally run the server
+```dockerfile
+CMD ["node", "index.js"]
+```
+
+Once you have configured your Dockerfile (and added it to your repo or folder) you can easily deploy the image.
+
+**Using the WebUI**
+1. Click on Projects in the Code Engine Dashboard.
+2. Click on your Project.
+3. Select "Applications" from the sidebar.
+4. Click "Create" to create a new application.
+5. Select "Source code" and enter the repository link.
+6. Click the "Specify build details" button.
+7. If your repository is not private, you can proceed to the next step.
+8. Select "Dockerfile" and click "Next".
+9. Unless you have reason to change something click "Done" again
+10. Once you're done configuring the build options, click "Create"
+
+**Using the CLI**
+
+```
+ibmcloud ce app create --name appname --src repo or /path/to/folder
+```
+
+The crucial aspect is to ensure that your Dockerfile is located in the root directory of your project.
+
+By specifying how to build the image, the resulting image size can be dramatically reduced. In my case, I was able to go from a 330 MB image down to just about 55 MB. This means that everything runs much faster.
+
+## in conlusion
