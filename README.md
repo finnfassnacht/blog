@@ -131,7 +131,7 @@ ibmcloud ce project create --name projectname
 Note that group Default and region us-east is the default,
 if you want to target a specific region use 
 ```
-ibmcloud target -r eu-gb
+ibmcloud target -r eu-g
 ```
 or if you want to taget a specific group use
 ```
@@ -150,7 +150,7 @@ Now that we've created a project, let's move on to deploying our code. We'll be 
 6. Click the "Specify build details" button.
 7. If your repository is not private, you can proceed to the next step.
 8. Select "Cloud Native Buildpack" and click "Next".
-9. Unless you habe reason to change something click "Next" again
+9. Unless you have reason to change something click "Next" again
 10. Once you're done configuring the build options, click "Create" to deploy your application.
 
 Blast off!
@@ -243,16 +243,8 @@ CMD ["node", "index.js"]
 Once you have configured your Dockerfile (and added it to your repo or folder) you can easily deploy the image.
 
 **Using the WebUI**
-1. Click on Projects in the Code Engine Dashboard.
-2. Click on your Project.
-3. Select "Applications" from the sidebar.
-4. Click "Create" to create a new application.
-5. Select "Source code" and enter the repository link.
-6. Click the "Specify build details" button.
-7. If your repository is not private, you can proceed to the next step.
-8. Select "Dockerfile" and click "Next".
-9. Unless you have reason to change something click "Done" again
-10. Once you're done configuring the build options, click "Create"
+
+Deploying your code with a Dockerfile in the Web UI works the same as deploying your code without one. However, in step 8, you will need to select "Dockerfile" so that Code Engine uses the instructions in your Dockerfile to build the image.
 
 **Using the CLI**
 
@@ -264,4 +256,5 @@ The crucial aspect is to ensure that your Dockerfile is located in the root dire
 
 By specifying how to build the image, the resulting image size can be dramatically reduced. In my case, I was able to go from a 330 MB image down to just about 55 MB. This means that everything runs much faster.
 
-## in conlusion
+## In conclusion,
+Deploying a simple HTTP server to IBM Code Engine is a straightforward process that can be done using different programming languages such as Python, Node.js, Go and more. With IBM Code Engine, you can deploy your code without worrying about the underlying infrastructure, making it easy to focus on writing your code. In this blog, we explored how to set up IBM Code Engine using the web UI and the CLI and provided sample code for the three programming languages. We also demonstrated how to create a new project and deploy your code to IBM Code Engine. With the steps outlined in this blog, you should have a clear understanding of how to deploy your own code to IBM Code Engine using your preferred programming language and method. Try it out for yourself and see how easy it is to deploy your code to IBM Code Engine!
