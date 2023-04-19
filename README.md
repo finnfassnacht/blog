@@ -150,7 +150,7 @@ Now that we've created a project, let's move on to deploying our code. We'll be 
 6. Click the "Specify build details" button.
 7. If your repository is not private, you can proceed to the next step.
 8. Select "Cloud Native Buildpack" and click "Next".
-9. Unless you have reason to change something click "Next" again
+9. Unless you have reason to change something click "Next" again.
 10. Once you're done configuring the build options, click "Create" to deploy your application.
 
 Blast off!
