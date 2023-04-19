@@ -175,7 +175,7 @@ note that the source can be a local file as well
 ## Update an Application
 Lets also briefly talk about how to update a application 
 I added a simple POST route to my nodejs script.
-```
+```js
 router.post("/return", (req,res) => {
 	let D = (req.body)
 	res.send("Returned >>" + D.data)
