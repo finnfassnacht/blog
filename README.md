@@ -49,15 +49,15 @@ The following sample code will start a server on port 8080 and set up a simple G
 // require expressjs
 const express = require("express")
 const app = express()
+// define port 8080
 PORT = 8080
 app.use(express.json())
-// use router to bundle all routes to /api
+// use router to bundle all routes to /
 const router = express.Router()
-app.use("/api", router)
-
-// get on root route (/api)
+app.use("/", router)
+// get on root route
 router.get("/", (req,res) => {
-	res.json({"msg":"hello world!!!"})
+	res.send("hello world!!!")
 })
 
 // start server
@@ -76,13 +76,15 @@ import (
 	"log"
 	"net/http"
 )
-
+// create function for route
 func helloworld(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hello, World!")
 }
 
 func main() {
+	// use helloworld on root route
 	http.HandleFunc("/", helloworld)
+	// use port 8080
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 ```
@@ -96,6 +98,7 @@ import os
 
 app = Flask(__name__)
 
+# set up root route
 @app.route("/")
 def hello_world():
 	return "Hello World"
@@ -178,6 +181,7 @@ Let's briefly discuss how to update your application. For instance, you might wa
 ```js
 router.post("/return", (req,res) => {
 	let D = (req.body)
+	// return data back to user
 	res.send("Returned >>" + D.data)
 	res.end()
 })
@@ -257,4 +261,4 @@ The crucial aspect is to ensure that your Dockerfile is located in the root dire
 By specifying how to build the image, the resulting image size can be dramatically reduced. In my case, I was able to go from a 330 MB image down to just about 55 MB. This means that everything runs much faster.
 
 ## In conclusion,
-Deploying a simple HTTP server to IBM Code Engine is a straightforward process that can be done using different programming languages such as Python, Node.js, Go and more. With IBM Code Engine, you can deploy your code without worrying about the underlying infrastructure, making it easy to focus on writing your code. In this blog, we explored how to set up IBM Code Engine using the web UI and the CLI and provided sample code for the three programming languages. We also demonstrated how to create a new project and deploy your code to IBM Code Engine. With the steps outlined in this blog, you should have a clear understanding of how to deploy your own code to IBM Code Engine using your preferred programming language and method. Try it out for yourself and see how easy it is to deploy your code to IBM Code Engine!
+Deploying a simple HTTP server to IBM Code Engine is a straightforward process that can be done using different programming languages such as Python, Node.js, Go and more. With IBM Code Engine, you can deploy your code without worrying about the underlying infrastructure, making it easy to focus on writing your code. In this blog, we explored how to set up IBM Code Engine using the web UI and the CLI and provided sample code for the three programming languages. We also demonstrated how to create a new project and deploy your code to IBM Code Engine. With the steps outlined in this blog, you should have a clear understanding of how to deploy your own code to IBM Code Engine using your preferred programming language and method. Try it out for yourself and see how easy it is to deploy your code to IBM Code Engine!!
