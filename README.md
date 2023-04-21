@@ -184,9 +184,9 @@ Use
 --build-context-dir
 `
 to define your
-```
+`
 /path/to/folder
-```
+`
 To run the example code in the CodeEngine repository (as I am doing), execute the following command:
 ```
 ibmcloud ce app create --name appname --src  https://github.com/IBM/CodeEngine.git --str buildpacks --build-context-dir /helloworld-samples/app-nodejs/
