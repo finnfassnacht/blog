@@ -174,15 +174,15 @@ Define the source of the code
 ```
 note that the source can be a local file as well 
 Define stratagey
-```
+`
 --str buildpacks
-```
+`
 When your code is not located in the root directory of your repo or directory, it is important to specify the exact location of your code.
 
 Use
-```
+`
 --build-context-dir
-```
+`
 to define your
 ```
 /path/to/folder
