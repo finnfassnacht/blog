@@ -69,7 +69,7 @@ app.listen(PORT, () => {
 })
 ```
 
-Find the Github repository [here](https://github.com/finnfassnacht/Code-Engine-nodejs).
+Find the Github repository [here](https://github.com/IBM/CodeEngine/tree/main/helloworld-samples/app-nodejs).
 
 **Golang**
 ```go
@@ -84,14 +84,14 @@ func helloworld(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hello, World!")
 }
 
-func main() {
+func main() 
 	// use helloworld on root route
 	http.HandleFunc("/", helloworld)
 	// use port 8080
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 ```
-Find the Github repository [here](https://github.com/finnfassnacht/Code-Engine-go).
+Find the Github repository [here](https://github.com/IBM/CodeEngine/tree/main/helloworld-samples/app-golang).
 
 
 **Python**
@@ -116,7 +116,7 @@ it is important to note that Python will require a Procfile:
 ```
 web: python main.py
 ```
-Find the Github repository [here](https://github.com/finnfassnacht/Code-Engine-python).
+Find the Github repository [here](https://github.com/IBM/CodeEngine/tree/main/helloworld-samples/app-python).
 
 ## Deploy an Application
 
@@ -144,7 +144,7 @@ or if you want to taget a specific group use
 ibmcloud target -d Default
 ```
 
-Now that we've created a project, let's move on to deploying our code. We'll be deploying our Node.js code from a source that's hosted in a [Github repository](https://github.com/finnfassnacht/Code-Engine-nodejs), along with the package.json and package-lock.json files. In this repository, you'll find a sample server written in Node.js (see the sample code above).
+Now that we've created a project, let's move on to deploying our code. We'll be deploying our Node.js code from a source that's hosted in a [Github repository](https://github.com/IBM/CodeEngine/tree/main/helloworld-samples/app-nodejs), along with the package.json and package-lock.json files. In this repository, you'll find a sample server written in Node.js (see the sample code above).
 
 **In the Web UI**
 1. Click on Projects in the Code Engine dashboard.
