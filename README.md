@@ -207,8 +207,12 @@ Your container is run using pen ource technologies Kubernetes and Knative, which
 ## Better Performance
 Congratulations, you now know how to deploy a simple web app quickly and easily! 
 
-But what if I told you there's a way to make your app even faster? Enter containers. When you deploy your app from source, Code Engine creates a container image for you. The platform detects the language you're using and selects a broad pre-built image for it, but it doesn't know exactly what your app needs or doesn't need. As a result, the image may be larger than necessary, leading to slower performance due to longer start up times. By defining your own, container image, you can optimize performance by ensuring that only the necessary components are included.
+But what if I told you there's a way to make your app more efficient
 
+But what if I told you there's a way to make your app even faster? Enter containers. When you deploy your app from source, Code Engine creates a container image for you. The platform detects the language you're using and selects a broad pre-built image for it, but it doesn't know exactly what your app needs or doesn't need. As a result, the image may be larger than necessary, leading to slower performance due to longer start up times. By defining your own, container image, you can optimize performance by ensuring that only the necessary components are included.? Enter containers. When you deploy your app from source, Code Engine creates a container image for you. The platform detects the language you're using and selects a broad pre-built image for it, but it doesn't know exactly what your app needs or doesn't need. As a result, the image may be larger than necessary, leading to slower performance due to longer start up times. By defining your own, container image, you can optimize performance by ensuring that only the necessary components are included.
+
+
+But what if I told you there's a way to make your app even faster? Enter containers. When you deploy your app from source, Code Engine creates a container image for you. The platform detects the language you're using and selects a broad pre-built image for it, but it doesn't know exactly what your app needs or doesn't need. As a result, the image may be larger than necessary, leading to slower performance due to longer start up times. By defining your own, container image, you can optimize performance by ensuring that only the necessary components are included.
 ## Making an Image
 
 To build an image, you don't need to worry about installing Docker or getting its daemon to run properly. That's because Code Engine will again build the image for you. The difference is that we can specify how to build it.
@@ -226,6 +230,8 @@ CMD ["node", "index.js"]
 > Use a pre-built image (alpine is extremely lightweight)
 ```dockerfile
 FROM node:alpine
+
+But what if I told you there's a way to make your app even faster? Enter containers. When you deploy your app from source, Code Engine creates a container image for you. The platform detects the language you're using and selects a broad pre-built image for it, but it doesn't know exactly what your app needs or doesn't need. As a result, the image may be larger than necessary, leading to slower performance due to longer start up times. By defining your own, container image, you can optimize performance by ensuring that only the necessary components are included.
 ```
 > Specify a working directory
 ```dockerfile
