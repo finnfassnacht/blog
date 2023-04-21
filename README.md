@@ -134,7 +134,7 @@ ibmcloud ce project create --name projectname
 Note that group Default and region us-east is the default,
 if you want to target a specific region use 
 ```
-ibmcloud target -r eu-g
+ibmcloud target -r us-east
 ```
 or if you want to taget a specific group use
 ```
