@@ -200,14 +200,14 @@ ibmcloud ce app update --name appname --src repolink-here --str buildpacks
 ## How it works
 That's all you need to do to deploy your app from source. Let's talk about the magic that happens after you hit "Create."
 
-First, IBM Code Engine loads your source code from a repository or from your computer locally. It then builds a Docker image and runs it on the IBM Cloud.
+First, IBM Code Engine loads your source code from a repository or from your computer locally. It then builds a container image and runs it on the IBM Cloud.
 
-Your container is run using Kubernetes, which automatically scales your application up and down based on traffic. This ensures that your app always has enough resources to handle incoming requests, while saving money during low traffic periods when Kubernetes scales down your application.
+Your container is run using pen ource technologies Kubernetes and Knative, which automatically scales your application up and down based on traffic. This ensures that your application always has enough resources to handle incoming requests, while saving money during low traffic periods when Kubernetes scales down your application.
 
 ## Better Performance
 Congratulations, you now know how to deploy a simple web app quickly and easily! 
 
-But what if I told you there's a way to make your app even faster? Enter containers. When you deploy your app from source, Code Engine creates a container and image for you. The platform detects the language you're using and selects a broad pre-built image for it, but it doesn't know exactly what your app needs or doesn't need. As a result, the image may be larger than necessary, leading to slower performance due to longer loading times. By creating your own, lighter base image, you can optimize performance by ensuring that only the necessary components are included.
+But what if I told you there's a way to make your app even faster? Enter containers. When you deploy your app from source, Code Engine creates a container image for you. The platform detects the language you're using and selects a broad pre-built image for it, but it doesn't know exactly what your app needs or doesn't need. As a result, the image may be larger than necessary, leading to slower performance due to longer start up times. By defining your own, container image, you can optimize performance by ensuring that only the necessary components are included.
 
 ## Making an Image
 
