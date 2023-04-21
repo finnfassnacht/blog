@@ -191,7 +191,10 @@ router.post("/return", (req,res) => {
 ibmcloud ce app update --name appname --src repolink-here --str buildpacks
 ```
 **Using the Web UI**
---add steps--
+1. Navigate to your Application
+2. Select "Configuration"
+3. Click "Edit and create new revision"
+4. After the Image is built hit "Save and Create"
 
 ## How it works
 That's all you need to do to deploy your app from source. Let's talk about the magic that happens after you hit "Create."
