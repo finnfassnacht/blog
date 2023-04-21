@@ -13,15 +13,15 @@ After logging into the IBM Cloud, you have two options to interact with the IBM 
 Here are the steps:
 
 1.  Install the IBM Cloud CLI
->on Linux
+>On Linux
 ```
 curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
 ```
->on MacOS
+>On MacOS
 ```
 curl -fsSL https://clis.cloud.ibm.com/install/osx | sh
 ```
->on Windows
+>On Windows
 ```
 iex (New-Object Net.WebClient).DownloadString('https://clis.cloud.ibm.com/install/powershell')
 ```
@@ -164,20 +164,33 @@ Done! You can now click on the provided link to see your application live.
 ```
 ibmcloud ce app create --name appname --src repolink-here --str buildpacks 
 ```
->Define the name of your App
+Define the name of your App
 ```
 --name appname
 ```
->Define the source of the code 
+Define the source of the code 
 ```
 --src repolink or /path/to/folder
 ```
 note that the source can be a local file as well 
->Define stratagey
+Define stratagey
 ```
 --str buildpacks
 ```
-If your 
+When your code is not located in the root directory of your repo or directory, it is important to specify the exact location of your code.
+
+Use
+```
+--build-context-dir
+```
+to define your
+```
+/path/to/folder
+```
+To run the example code in the CodeEngine repository (as I am doing), execute the following command:
+```
+ibmcloud ce app create --name appname --src  https://github.com/IBM/CodeEngine.git --str buildpacks --build-context-dir /helloworld-samples/app-nodejs/
+```
 
 ## Update an Application
 Let's briefly discuss how to update your application. For instance, you might want to add a new POST route to your Node.js code that returns data sent to the server.
@@ -225,28 +238,28 @@ RUN npm install
 EXPOSE 8080
 CMD ["node", "index.js"]
 ```
-> Use a pre-built image (alpine is extremely lightweight)
+Use a pre-built image (alpine is extremely lightweight)
 ```dockerfile
 FROM node:alpine
 
 ```
-> Specify a working directory
+Specify a working directory
 ```dockerfile
 WORKDIR /usr/src/app
 ```
-> Copy package.json and package-lock.json
+Copy package.json and package-lock.json
 ```dockerfile
 COPY package*.json index.js ./
 ```
-> Install the required packages
+Install the required packages
 ```dockerfile
 RUN npm install
 ```
-> Expose the port 8080 to the outside
+Expose the port 8080 to the outside
 ```dockerfile
 Expose 8080
 ```
-> finally run the server
+Finally run the server
 ```dockerfile
 CMD ["node", "index.js"]
 ```
