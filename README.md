@@ -223,11 +223,11 @@ RUN npm install
 EXPOSE 8080
 CMD ["node", "index.js"]
 ```
-> Use a pre-built image (alpine is extremely lightwait)
+> Use a pre-built image (alpine is extremely lightweight)
 ```dockerfile
 FROM node:alpine
 ```
-> Specify a Working Directory
+> Specify a working directory
 ```dockerfile
 WORKDIR /usr/src/app
 ```
@@ -239,7 +239,7 @@ COPY package*.json index.js ./
 ```dockerfile
 RUN npm install
 ```
-> Expose the port 8080 to the Outside
+> Expose the port 8080 to the outside
 ```dockerfile
 Expose 8080
 ```
