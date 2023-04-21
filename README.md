@@ -1,13 +1,16 @@
-# Deploying a Simple HTTP Server to IBM Code Engine from Source using Python, Node.js and Go
-In this blog, we will explore how to deploy a simple HTTP server to IBM Code Engine using three popular programming languages: Python, Node.js, and Go. IBM Cloud Code Engine is a fully managed, serverless platform that runs your containerized workloads, including web apps, microservices, event-driven functions or batch jobs. In this post we will focus on Code Engine Applications which are designed to server HTTP requests.  We will demonstrate how to use the web UI and the CLI to deploy our code. By the end of this blog, you will have a clear understanding of how to deploy your own code to IBM Code Engine using your preferred programming language.
-## Setting up Code Engine
-Before we can deploy our simple HTTP server, we need to set up IBM Code Engine. If you don't have an IBM Cloud account yet, you can create one for free [here](https://cloud.ibm.com/codeengine/overview), while you will need to input your credit card details, Code Engine provides a generous Free tier that offers ample resources to kickstart your project.
+# Deploying a Simple HTTP Server to IBM Cloud Code Engine from Source Code using Python, Node.js and Go
 
-After that you have two options: using the web UI or the CLI. 
+In this blog post, we will explore how to deploy a simple HTTP server to Code Engine using three popular programming languages: Python, Node.js, and Go. IBM Cloud Code Engine is a fully managed, serverless platform that runs your containerized workloads, including web apps, microservices, event-driven functions or batch jobs. In this post we will focus on Code Engine applications, which are designed to serve HTTP requests.  We will demonstrate how to use the web UI and the CLI to deploy our code. By the end of this post, you will have a clear understanding of how to deploy your own code to Code Engine using your preferred programming language.
+
+## Setting up Code Engine
+
+Before we can deploy our simple HTTP server, we need to get set up Code Engine. If you don't have an IBM Cloud account yet, you can create one for free [here](https://cloud.ibm.com/codeengine/overview). Be aware that Code Engine requires an account with a valid credit card on file. However, Code Engine provides a generous free tier with ample resources to kickstart your project.
+
+After logging into the IBM Cloud, you have two options to interact with the IBM Cloud and Code Engine: using the command line interface (CLI) or the web UI. 
 
 #### Using the CLI
 
-To set up IBM Code Engine using the CLI, follow these steps:
+Here are the steps:
 
 1.  Install the IBM Cloud CLI
 >on Linux
@@ -33,15 +36,15 @@ ibmcloud plugin install code-engine
 ```
 
 #### Using the Web UI
-To set up IBM Code Engine using the Web UI, follow these steps:
+To use the Web UI, follow these steps:
 1. Go to  [Code Engine](https://cloud.ibm.com/codeengine/overview)
 2. Log in
 
-Once you have set up IBM Code Engine, you can proceed to deploy your simple HTTP server. In the next section, let's look at some sample code for your HTTP server in Python, Node.js and Go.
+You can now proceed to deploy your simple HTTP server. In the next section, let's look at the sample code for your HTTP server in Python, Node.js and Go.
 
 ## Sample code
 
-The following sample code will start a server on port 8080 and set up a simple GET route that serves a "Hello World" message. The beauty of using IBM Code Engine is that you don't need any specific modules or configurations. If the code runs successfully on your localhost at port 8080, it will most likely run on Code Engine without any modifications.
+The following sample code will start a server on port 8080 and set up a simple GET route that serves a "Hello World" message. The beauty of using Code Engine is that you don't need any specific modules or configurations. If the code runs successfully on your localhost at port 8080, it will run on Code Engine without any modifications.
 
 **Nodejs app with Express.js**
 
@@ -66,7 +69,7 @@ app.listen(PORT, () => {
 })
 ```
 
-Find the Github Repository [here](https://github.com/finnfassnacht/Code-Engine-nodejs).
+Find the Github repository [here](https://github.com/finnfassnacht/Code-Engine-nodejs).
 
 **Golang**
 ```go
@@ -88,7 +91,7 @@ func main() {
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 ```
-Find the Github Repository [here](https://github.com/finnfassnacht/Code-Engine-go).
+Find the Github repository [here](https://github.com/finnfassnacht/Code-Engine-go).
 
 
 **Python**
@@ -113,11 +116,11 @@ it is important to note that Python will require a Procfile:
 ```
 web: python main.py
 ```
-Find the Github Repository [here](https://github.com/finnfassnacht/Code-Engine-python).
+Find the Github repository [here](https://github.com/finnfassnacht/Code-Engine-python).
 
 ## Deploy an Application
 
-Now that we've looked at the sample code, let's talk about deploying it. The first step is to create a new project. Your application will be contained within this project.
+Now that we've looked at the sample code, let's move on to deploying it. The first step is to create a new project. Your application will be contained within this project.
 
 **To create a new Project in the Web UI** 
 
@@ -141,12 +144,11 @@ or if you want to taget a specific group use
 ibmcloud target -d Default
 ```
 
-
-Now that we've created a project, let's move on to deploying our code. We'll be deploying our Node.js code from a source that's hosted in a [Github Repository](https://github.com/finnfassnacht/Code-Engine-nodejs), along with the package.json and package-lock.json files. In this repository, you'll find a sample server written in Node.js (see the sample code above).
+Now that we've created a project, let's move on to deploying our code. We'll be deploying our Node.js code from a source that's hosted in a [Github repository](https://github.com/finnfassnacht/Code-Engine-nodejs), along with the package.json and package-lock.json files. In this repository, you'll find a sample server written in Node.js (see the sample code above).
 
 **In the Web UI**
-1. Click on Projects in the Code Engine Dashboard.
-2. Click on your Project.
+1. Click on Projects in the Code Engine dashboard.
+2. Select your project.
 3. Select "Applications" from the sidebar.
 4. Click "Create" to create a new application.
 5. Select "Source code" and enter the repository link.
@@ -156,7 +158,7 @@ Now that we've created a project, let's move on to deploying our code. We'll be 
 9. Unless you have reason to change something click "Next" again.
 10. Once you're done configuring the build options, click "Create" to deploy your application.
 
-Blast off!
+Done! You can now click on the provided link to see your application live.
 
 **In the CLI**
 ```
@@ -178,7 +180,7 @@ note that the source can be a local file as well
 If your 
 
 ## Update an Application
-Let's briefly discuss how to update your application. For instance, you might want to add a new POST route to your Node.js script that returns data sent to the server.
+Let's briefly discuss how to update your application. For instance, you might want to add a new POST route to your Node.js code that returns data sent to the server.
 ```js
 router.post("/return", (req,res) => {
 	let D = (req.body)
@@ -200,24 +202,20 @@ ibmcloud ce app update --name appname --src repolink-here --str buildpacks
 ## How it works
 That's all you need to do to deploy your app from source. Let's talk about the magic that happens after you hit "Create."
 
-First, IBM Code Engine loads your source code from a repository or from your computer locally. It then builds a container image and runs it on the IBM Cloud.
+First, Code Engine loads your source code from a repository or from your computer locally. It then builds a container image and runs it on IBM Cloud.
 
-Your container is run using pen ource technologies Kubernetes and Knative, which automatically scales your application up and down based on traffic. This ensures that your application always has enough resources to handle incoming requests, while saving money during low traffic periods when Kubernetes scales down your application.
+Specifically, your container is managed by two open source technologies (Kubernetes and Knative), which automatically scale your application up and down based on the traffic it receives. This ensures that your application always has enough resources to handle incoming requests, while saving money during low traffic periods when your application is scalled down again. If it receives no traffic, it will even scale to 0 and stops incurring charges. Once your application receives traffic, it will automatically "wake up" and scale back up to one instance.
 
 ## Better Performance
 Congratulations, you now know how to deploy a simple web app quickly and easily! 
 
-But what if I told you there's a way to make your app more efficient
+But what if I told you there's a way to make your application more efficient? Enter containers. When you deploy your app from source, Code Engine creates a container image for you. The platform detects the language you're using and selects a general purpose pre-built image for it. But of course, it doesn't know exactly what your app needs or doesn't need. As a result, the image may be larger than necessary, leading to slower deployment performance and longer start up times. By defining your own, container image, you can optimize your app by ensuring that only the necessary components are included.
 
-But what if I told you there's a way to make your app even faster? Enter containers. When you deploy your app from source, Code Engine creates a container image for you. The platform detects the language you're using and selects a broad pre-built image for it, but it doesn't know exactly what your app needs or doesn't need. As a result, the image may be larger than necessary, leading to slower performance due to longer start up times. By defining your own, container image, you can optimize performance by ensuring that only the necessary components are included.? Enter containers. When you deploy your app from source, Code Engine creates a container image for you. The platform detects the language you're using and selects a broad pre-built image for it, but it doesn't know exactly what your app needs or doesn't need. As a result, the image may be larger than necessary, leading to slower performance due to longer start up times. By defining your own, container image, you can optimize performance by ensuring that only the necessary components are included.
-
-
-But what if I told you there's a way to make your app even faster? Enter containers. When you deploy your app from source, Code Engine creates a container image for you. The platform detects the language you're using and selects a broad pre-built image for it, but it doesn't know exactly what your app needs or doesn't need. As a result, the image may be larger than necessary, leading to slower performance due to longer start up times. By defining your own, container image, you can optimize performance by ensuring that only the necessary components are included.
 ## Making an Image
 
-To build an image, you don't need to worry about installing Docker or getting its daemon to run properly. That's because Code Engine will again build the image for you. The difference is that we can specify how to build it.
+Since Code Engine will build the container image for you, you don't need to worry about installing Docker or getting its daemon to run properly.
 
-To build your own custom image, you'll need to create a Dockerfile. In this example, we'll be creating one for the Node.js app. To get started, create a new file called "Dockerfile" without any file extension. 
+To build your own custom image, you'll need to create a Dockerfile. In this example, we'll be creating one for the Node.js application. To get started, create a new file called "Dockerfile" without any file extension. 
 
 ```dockerfile 
 FROM node:alpine
@@ -231,7 +229,6 @@ CMD ["node", "index.js"]
 ```dockerfile
 FROM node:alpine
 
-But what if I told you there's a way to make your app even faster? Enter containers. When you deploy your app from source, Code Engine creates a container image for you. The platform detects the language you're using and selects a broad pre-built image for it, but it doesn't know exactly what your app needs or doesn't need. As a result, the image may be larger than necessary, leading to slower performance due to longer start up times. By defining your own, container image, you can optimize performance by ensuring that only the necessary components are included.
 ```
 > Specify a working directory
 ```dockerfile
@@ -266,9 +263,14 @@ Deploying your code with a Dockerfile in the Web UI works the same as deploying 
 ibmcloud ce app create --name appname --src repo or /path/to/folder
 ```
 
-The crucial aspect is to ensure that your Dockerfile is located in the root directory of your project.
+Note that it's important that your Dockerfile is located in the root directory of your project.
 
-By specifying how to build the image, the resulting image size can be dramatically reduced. In my case, I was able to go from a 330 MB image down to just about 55 MB. This means that everything runs much faster.
+By specifying how to build the image, the resulting image size can be dramatically reduced. In my case, I was able to reduce the image size by about 90%. This means that everything will run much faster.
 
-## In conclusion,
-Deploying a simple HTTP server to IBM Code Engine is a straightforward process that can be done using different programming languages such as Python, Node.js, Go and more. With IBM Code Engine, you can deploy your code without worrying about the underlying infrastructure, making it easy to focus on writing your code. In this blog, we explored how to set up IBM Code Engine using the web UI and the CLI and provided sample code for the three programming languages. We also demonstrated how to create a new project and deploy your code to IBM Code Engine. With the steps outlined in this blog, you should have a clear understanding of how to deploy your own code to IBM Code Engine using your preferred programming language and method. Try it out for yourself and see how easy it is to deploy your code to IBM Code Engine!!
+## In conclusion
+
+Deploying a simple HTTP server to Code Engine is a straightforward process that can be done using different programming languages such as Python, Node.js, Go and more. With Code Engine, you can deploy your code without worrying about the underlying infrastructure, making it easy to focus on writing your code. 
+
+In this blog post, we explored how to set up Code Engine using the web UI and the CLI and then provided sample code for the three programming languages. We also demonstrated how to create a new project and deploy your code. With the steps outlined in this post, you should have a clear understanding of how to deploy your own code to Code Engine using your preferred programming language and method. 
+
+Try it out for yourself and see how easy it is to deploy your code to IBM Cloud Code Engine.
