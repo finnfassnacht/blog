@@ -1,7 +1,7 @@
 # Deploying a Simple HTTP Server to IBM Code Engine from Source using Python, Node.js and Go
 In this blog, we will explore how to deploy a simple HTTP server to IBM Code Engine using three popular programming languages: Python, Node.js, and Go. IBM Cloud Code Engine is a fully managed, serverless platform that runs your containerized workloads, including web apps, microservices, event-driven functions or batch jobs. In this post we will focus on Code Engine Applications which are designed to server HTTP requests.  We will demonstrate how to use the web UI and the CLI to deploy our code. By the end of this blog, you will have a clear understanding of how to deploy your own code to IBM Code Engine using your preferred programming language.
 ## Setting up Code Engine
-Before we can deploy our simple HTTP server, we need to set up IBM Code Engine. If you don't have an IBM Cloud account yet, you can create one for free [here](https://cloud.ibm.com/codeengine/overview) (While you will need to input your credit card details, Code-Engine provides a generous Free tier that offers ample resources to kickstart your project).
+Before we can deploy our simple HTTP server, we need to set up IBM Code Engine. If you don't have an IBM Cloud account yet, you can create one for free [here](https://cloud.ibm.com/codeengine/overview), while you will need to input your credit card details, Code Engine provides a generous Free tier that offers ample resources to kickstart your project.
 
 After that you have two options: using the web UI or the CLI. 
 
