@@ -142,7 +142,7 @@ ibmcloud target -d Default
 ```
 
 
-Now that we've created a project, let's move on to deploying our code. We'll be deploying our code from a source that's hosted in a [Github Repository](https://github.com/finnfassnacht/Code-Engine-nodejs), along with the package.json and package-lock.json files. In this repository, you'll find a sample server written in Node.js (see the sample code above).
+Now that we've created a project, let's move on to deploying our code. We'll be deploying our Node.js code from a source that's hosted in a [Github Repository](https://github.com/finnfassnacht/Code-Engine-nodejs), along with the package.json and package-lock.json files. In this repository, you'll find a sample server written in Node.js (see the sample code above).
 
 **In the Web UI**
 1. Click on Projects in the Code Engine Dashboard.
@@ -160,7 +160,7 @@ Blast off!
 
 **In the CLI**
 ```
-ibmcloud ce app create --name appname --src repolink-here --str buildpacks
+ibmcloud ce app create --name appname --src repolink-here --str buildpacks 
 ```
 >Define the name of your App
 ```
@@ -175,6 +175,7 @@ note that the source can be a local file as well
 ```
 --str buildpacks
 ```
+If your 
 
 ## Update an Application
 Let's briefly discuss how to update your application. For instance, you might want to add a new POST route to your Node.js script that returns data sent to the server.
