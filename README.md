@@ -1,6 +1,8 @@
 # Deploying a Simple HTTP Server to IBM Cloud Code Engine from Source Code using Python, Node.js and Go
 
-In this blog post, we will explore how to deploy a simple HTTP server to Code Engine using three popular programming languages: Python, Node.js, and Go. IBM Cloud Code Engine is a fully managed, serverless platform that runs your containerized workloads, including web apps, microservices, event-driven functions or batch jobs. In this post we will focus on Code Engine applications, which are designed to serve HTTP requests.  We will demonstrate how to use the web UI and the CLI to deploy our code. By the end of this post, you will have a clear understanding of how to deploy your own code to Code Engine using your preferred programming language.
+In this blog post, we will explore how to deploy a simple HTTP server to Code Engine using three popular programming languages: Python, Node.js, and Go. IBM Cloud Code Engine is a fully managed, serverless platform that runs your containerized workloads, including web apps, microservices, event-driven functions or batch jobs. 
+
+In this post we will focus on Code Engine applications, which are designed to serve HTTP requests.  We will demonstrate how to use the web UI and the CLI to deploy our code. By the end of this post, you will have a clear understanding of how to deploy your own code to Code Engine using your preferred programming language.
 
 ## Setting up Code Engine
 
@@ -222,7 +224,9 @@ Specifically, your container is managed by two open source technologies (Kuberne
 ## Better Performance
 Congratulations, you now know how to deploy a simple web app quickly and easily! 
 
-But what if I told you there's a way to make your application more efficient? Enter containers. When you deploy your app from source, Code Engine creates a container image for you. The platform detects the language you're using and selects a general purpose pre-built image for it. But of course, it doesn't know exactly what your app needs or doesn't need. As a result, the image may be larger than necessary, leading to slower deployment performance and longer start up times. By defining your own, container image, you can optimize your app by ensuring that only the necessary components are included.
+But what if I told you there's a way to make your application more efficient? Enter containers. 
+
+When you deploy your app from source, Code Engine creates a container image for you. The platform detects the language you're using and selects a general purpose pre-built image for it. But of course, it doesn't know exactly what your app needs or doesn't need. As a result, the image may be larger than necessary, leading to slower deployment performance and longer start up times. By defining your own, container image, you can optimize your app by ensuring that only the necessary components are included.
 
 ## Making an Image
 
